@@ -58,3 +58,49 @@ let nombres: Array<string> = ["Juan", "Pedro"];
     ```
 
 Esto generará los archivos `.js` correspondientes en el directorio de salida (`outDir`) que hayas configurado.
+
+##  Tipos de datos Los tipos de variables en TypeScript incluyen:
+
+    ```
+-   **`string`**: Cadenas de texto.
+-   **`number`**: Números, tanto enteros como decimales.
+-   **`boolean`**: Valores de verdadero o falso (`true` o `false`).
+-   **`null`**: Representa la ausencia intencional de un valor.
+-   **`undefined`**: Indica que una variable no ha sido asignada.
+-   **`any`**: Permite cualquier tipo de valor, desactivando la comprobación de tipos.
+-   **`void`**: Indica que una función no devuelve ningún valor.
+-   **`never`**: Representa valores que nunca ocurren (ej. una función que siempre lanza un error).
+
+## 6. Diferencias Clave entre Tipos
+
+### `null` vs. `undefined`
+
+Aunque ambos representan la ausencia de valor, su uso es diferente:
+
+-   **`undefined`**: Es el valor por defecto de una variable que ha sido declarada pero no inicializada.
+    ```typescript
+    let sinInicializar;
+    console.log(sinInicializar); // Imprime: undefined
+    ```
+-   **`null`**: Es un valor que se asigna de forma explícita para indicar que una variable no tiene valor intencionadamente.
+    ```typescript
+    let datosUsuario: object | null = null;
+    // ...luego, se podría asignar un objeto
+    datosUsuario = { nombre: "Gemini" };
+    ```
+
+### `any` vs. `void` vs. `null`
+
+-   **`any`**: Es un "comodín" que desactiva la revisión de tipos. Permite que una variable contenga cualquier tipo de valor, perdiendo la seguridad que ofrece TypeScript. Se debe usar con precaución.
+    ```typescript
+    let comodin: any = "texto";
+    comodin = 123; // Válido
+    comodin.hacerAlgo(); // No da error al compilar, pero fallará en ejecución.
+    ```
+-   **`void`**: Se usa principalmente como tipo de retorno para funciones que no devuelven ningún valor.
+    ```typescript
+    function mostrarMensaje(): void {
+      console.log("Esta función no retorna nada.");
+    }
+    ```
+-   **`null`**: Es un valor asignable que representa la ausencia intencional de un objeto. A diferencia de `void` (que es un tipo de retorno) y `any` (que es un escape del sistema de tipos), `null` es un valor primitivo.
